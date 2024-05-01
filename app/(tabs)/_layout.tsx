@@ -5,7 +5,7 @@ import { Tabs } from "expo-router";
 
 export default () => {
   return (
-    <Tabs>
+    <Tabs initialRouteName="/books" screenOptions={{headerTitle : "kmnkn"}}>
       <Tabs.Screen
         name="home"
         options={{
@@ -15,7 +15,7 @@ export default () => {
             height: 24,
           },
           tabBarIcon: ({focused , color}) => (
-            <MaterialIcons name="home-filled" size={24} color={focused ? "blue" : "black"} />
+            <MaterialIcons name="home-filled" size={24} color="black" />
           ),
           headerTitleAlign: "center",
           headerRight: () => (
