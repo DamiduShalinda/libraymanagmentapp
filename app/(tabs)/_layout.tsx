@@ -1,11 +1,11 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from '@expo/vector-icons';
-import { Tabs } from "expo-router";
+import { Tabs , Stack } from "expo-router";
 
 export default () => {
   return (
-    <Tabs initialRouteName="/books" screenOptions={{headerTitle : "kmnkn"}}>
+    <Tabs initialRouteName="authors" screenOptions={{headerTitle : "kmnkn"}}>
       <Tabs.Screen
         name="home"
         options={{
@@ -49,6 +49,16 @@ export default () => {
           tabBarShowLabel : false,
           tabBarIcon: ({focused , color}) => (
             <FontAwesome name="users" size={24} color={focused ? "blue" : "black"} />
+          ),
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarShowLabel : false,
+          tabBarIcon: ({focused , color}) => (
+            <FontAwesome name="user" size={24} color={focused ? "blue" : "black"} />
           ),
           headerShown: false,
         }}

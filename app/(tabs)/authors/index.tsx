@@ -15,12 +15,15 @@ export default () => {
   );
 
   return (
-    <View>
-      <TextInput placeholder="Search By Author Name" style={styles.filterButton} placeholderTextColor={'#fff'} />
+    <View style={styles.container}>
+      <View style={styles.searchContainer}>
+      <TextInput placeholder="Search By Author Name" style={styles.filterButton} />
+      </View>
       <FlatList
         data={data}
         renderItem={({ item }) => <AuthorNameItem item={item} />}
         keyExtractor={(item) => item.id}
+        style={{ width: '100%' }}
       />
     </View>
   );
@@ -28,9 +31,22 @@ export default () => {
 
 
 const styles = StyleSheet.create({
+  container : {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    padding: 10,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    width: '100%',
+  },
   filterButton: {
-    backgroundColor: 'black',
-    color: 'white',
+    borderColor: '#929292',
+    borderWidth: 1,
     width: '90%',
     padding: 10,
     marginBottom: 10,
@@ -39,11 +55,12 @@ const styles = StyleSheet.create({
   authorItemContainer: {
     flexDirection: 'row',
     padding: 10,
-    gap : 5
-  },
-  container : {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    gap : 5,
+    backgroundColor: '#f9f9f9',
+    width: '100%',
+    borderRadius: 5,
+    marginBottom: 10,
+    borderColor: '#f9f9f9',
+
   },
 });

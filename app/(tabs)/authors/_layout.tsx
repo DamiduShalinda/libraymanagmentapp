@@ -8,6 +8,7 @@ const StackLayout = () => {
             options={{
             headerTitleAlign: "center",
             headerTitle: "All Authors",
+            headerShadowVisible: false,
             }}
         />
         </Stack>
