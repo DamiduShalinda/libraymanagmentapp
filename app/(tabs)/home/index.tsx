@@ -1,5 +1,8 @@
 import { getAllBooks } from "@/api/books";
+import AuthorItemCard from "@/components/author/AuthorItemCard";
+import BookItem from "@/components/books/BookItem";
 import { Book } from "@/modal/book";
+import useBookStore from "@/store/bookListStore";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -8,6 +11,7 @@ import { View, Text, ScrollView, StyleSheet, Pressable  ,Image, FlatList , Modal
 export default function Home() {
 
   const [modalVisible, setModalVisible] = useState(false);
+  const { books } = useBookStore();
   const {isLoading , isError , data , error} = useQuery({
     queryKey: ["books"],
     queryFn: getAllBooks,
@@ -17,20 +21,6 @@ export default function Home() {
     console.log("Clicked");
     setModalVisible(true);
   }
-
-  const BookItem = ({ item }: { item: Book }) => (
-    <Pressable style={styles.contentCard} onPress={() => console.log(item.id)}>
-      <Image source={{ uri: item.coverImageUrl }} width={100} height={150}/>
-      <Text style={styles.contentCardText}>{item.bookName}</Text>
-    </Pressable>
-  );
-
-  const AuthorItemCard = ({item} : {item : {imageLink : string , name : string}}) => (
-    <View style={styles.authorDetailsCard}>
-      <Image source={{uri : item.imageLink}} style={styles.authorImage}/>
-      <Text style={styles.authorName}>{item.name}</Text>
-    </View>
-  );
 
 
   if(isLoading){
@@ -83,20 +73,21 @@ export default function Home() {
           </View>
       </View>
       <Pressable onPress={() => handleOnClickFunction()} style={styles.floaitngActionButton}>
-        <Text style={styles.floatingActionButtonText}>List</Text>
+        <Text style={styles.floatingActionButtonText}>List {books.length}</Text>
       </Pressable>
       <Modal
         animationType="slide"
-        transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(false);
         }}
-        presentationStyle="overFullScreen"
-        style={{ backgroundColor: "#fff"}}
+        presentationStyle="pageSheet"
+        style={{ backgroundColor: "#fff" , height: "60%" , width: "100%"}}
       >
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#fff"}}>
-          <Text>Modal</Text>
+          {data.map((book: Book) => (
+            <Text key={book.id}>{book.bookName}</Text>
+          ))}
           <Pressable onPress={() => setModalVisible(false)}>
             <Text>Close</Text>
           </Pressable>
@@ -145,48 +136,8 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "left",
   },
-  contentImage: {
-    width: 100,
-    height: 150,
-    margin: 5,
-    backgroundColor: "gray",
-  },
-  contentCardText: {
-    fontSize: 12,
-    fontWeight: "400",
-    textAlign: "center",
-  },
-  contentCard: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    margin: 5,
-  },
   authorFlatList: {
     width: "100%",
-  },
-  authorDetailsCard: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    margin: 5,
-    padding: 5,
-    borderColor: "#C3C3C3",
-    borderWidth: 1,
-    backgroundColor: "#fff",
-  },
-  authorImage: {
-    width: 25,
-    height: 25,
-    margin: 5,
-    borderRadius: 50,
-    backgroundColor: "gray",
-  },
-  authorName: {
-    fontSize: 12,
-    fontWeight: "400",
-    textAlign: "center",
   },
   AllAuthors: {
     backgroundColor: "#fff",
@@ -205,11 +156,13 @@ const styles = StyleSheet.create({
     right: 20,
     borderColor: "#000",
     borderWidth: 1,
-    padding: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
     borderRadius: 50,
   },
   floatingActionButtonText: {
     color: "#000",
-    padding: 10,
+    fontSize: 15,
+    padding: 5,
   },
 });

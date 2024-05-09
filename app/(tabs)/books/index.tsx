@@ -1,3 +1,5 @@
+import AuthorItemCard from "@/components/author/AuthorItemCard";
+import BookItem from "@/components/books/BookItem";
 import { Book } from "@/modal/book";
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
@@ -11,11 +13,6 @@ import {
   TextInput,
   Image,
 } from "react-native";
-
-const data = Array.from({ length: 60 }).map((_, index) => ({
-  id: String(index),
-  title: `Book ${index + 1}`,
-}));
 
 
 export default () => {
@@ -37,12 +34,6 @@ export default () => {
       setLoading(false);
     }
   };
-  const renderItem = ({ item }: { item: Book }) => (
-    <Pressable style={styles.contentCard} onPress={() => console.log(item.id)}>
-      <Image source={{ uri: item.coverImageUrl }} width={100} height={150}/>
-      <Text style={styles.contentCardText}>{item.bookName}</Text>
-    </Pressable>
-  );
 
   return (
     <View style={styles.container}>
@@ -51,7 +42,7 @@ export default () => {
       ) : (
         <FlatList
           data={books}
-          renderItem={renderItem}
+          renderItem={({ item }) => <BookItem item={item} />}
           keyExtractor={(item) => item.id}
           style={styles.flatListContainer}
           numColumns={3}
@@ -67,10 +58,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     backgroundColor: "white",
+    width: "100%",
   },
   flatListContainer: {
     paddingVertical: 10,
     paddingHorizontal: 5,
+    width: "100%",
   },
   contentCard: {
     flexDirection: "column",
