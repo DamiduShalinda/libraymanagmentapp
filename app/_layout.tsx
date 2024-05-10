@@ -12,7 +12,7 @@ const StackLayout = () => {
             <Stack.Screen name="register" options={{
                 title : "Register"
                 }}/>
-            <Stack.Screen name="(tabs)" options={{headerShown : false}}/>
+            <Stack.Screen name="(drawer)" options={{headerShown : false}}/>
         </Stack>
         </QueryClientProvider>
     );

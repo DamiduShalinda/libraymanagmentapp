@@ -3,10 +3,12 @@ import React from "react";
 import { Book } from "@/modal/book";
 import { AntDesign } from "@expo/vector-icons";
 import useBookStore from "@/store/bookListStore";
+import { useRouter } from "expo-router";
 
 const BookItem = ({ item }: { item: Book }) =>{
 
   const {addBook} = useBookStore();
+  const router = useRouter();
 
   const handleAddBook = (book: string) => {
     addBook(book);
@@ -15,7 +17,7 @@ const BookItem = ({ item }: { item: Book }) =>{
   }
 
   return (
-    <Pressable style={styles.contentCard} onPress={() => console.log(item.id)}>
+    <Pressable style={styles.contentCard} onPress={() => router.push(`/(tabs)/books/${item.id}`)}>
       <View style={styles.contentImage}>
         <Image source={{ uri: item.coverImageUrl }} width={100} height={150} />
         <Pressable
