@@ -1,13 +1,15 @@
 import { Controller, useForm } from "react-hook-form";
-import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable, Button } from "react-native";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormData, loginSchema } from "@/modal/login";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { login } from "@/api/login";
-import { Redirect, router } from "expo-router";
+import { Redirect, router , Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 
 export default () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -21,6 +23,10 @@ export default () => {
     console.log(data);
     loginMutation.mutate(data);
   };
+
+  const tempLogin = () => {
+    router.replace("/(tabs)/home");
+  }
 
   const loginMutation = useMutation({
     mutationFn: login,
@@ -78,8 +84,9 @@ export default () => {
         <Pressable onPress={handleSubmit(onSubmit)} style={styles.submitButton}>
           <Text style={styles.submitButtonText}>Submit</Text>
         </Pressable>
+        <Button title="temp login" onPress={tempLogin} />
       </View>
-      <Pressable onPress={() => reset()} style={styles.registerButton}>
+      <Pressable onPress={() => {router.push("/register/")}} style={styles.registerButton}>
         <Text style={styles.registerButtonText}>Register New User</Text>
       </Pressable>
     </View>

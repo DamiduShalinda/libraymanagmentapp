@@ -10,27 +10,10 @@ export default () => {
         name="home"
         options={{
           tabBarShowLabel : false,
-          tabBarIconStyle: {
-            width: 24,
-            height: 24,
-          },
-          tabBarIcon: ({focused , color}) => (
-            <MaterialIcons name="home-filled" size={24} color="black" />
+          headerShown: false,
+          tabBarIcon: ({size , color} : {size : number , color : string}) => (
+            <MaterialIcons name="home-filled" size={size} color={color} />
           ),
-          headerTitleAlign: "center",
-          headerRight: () => (
-            <MaterialIcons name="search" size={24} color="black" />
-          ),
-          headerLeft: () => (
-            <MaterialIcons name="menu" size={24} color="black" />
-          ),
-          headerPressOpacity: 0.5,
-          headerLeftContainerStyle: {
-            marginLeft: 15,
-          },
-          headerRightContainerStyle: {
-            marginRight: 15,
-          },
         }}
       />
       <Tabs.Screen
@@ -38,8 +21,8 @@ export default () => {
         options={{
           tabBarShowLabel : false,
           headerShown: false,
-          tabBarIcon: ({focused , color}) => (
-            <MaterialCommunityIcons name="bookshelf" size={24} color={focused ? "blue" : "black"} />
+          tabBarIcon: ({size , color} : {size : number , color : string}) => (
+            <MaterialCommunityIcons name="bookshelf" size={size} color={color} />
           ),
         }}
       />
@@ -47,8 +30,8 @@ export default () => {
         name="authors"
         options={{
           tabBarShowLabel : false,
-          tabBarIcon: ({focused , color}) => (
-            <FontAwesome name="users" size={24} color={focused ? "blue" : "black"} />
+          tabBarIcon: ({size , color} : {size : number , color : string}) => (
+            <FontAwesome name="users" size={size} color={color} />
           ),
           headerShown: false,
         }}
@@ -57,8 +40,8 @@ export default () => {
         name="profile"
         options={{
           tabBarShowLabel : false,
-          tabBarIcon: ({focused , color}) => (
-            <FontAwesome name="user" size={24} color={focused ? "blue" : "black"} />
+          tabBarIcon: ({size , color}  : {size : number , color : string}) => (
+            <FontAwesome name="user" size={size} color={color} />
           ),
           headerShown: false,
         }}
