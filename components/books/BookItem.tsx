@@ -11,13 +11,13 @@ const BookItem = ({ item }: { item: Book }) =>{
   const router = useRouter();
 
   const handleAddBook = (book: string) => {
-    addBook(book);
+    addBook({id: item.id, bookName: book, imageUrl: item.coverImageUrl});
     console.log("Item added");
     ToastAndroid.show("Item added", ToastAndroid.SHORT);
   }
 
   return (
-    <Pressable style={styles.contentCard} onPress={() => router.push(`/(tabs)/books/${item.id}`)}>
+    <Pressable style={styles.contentCard} onPress={() => router.push(`/(drawer)/(tabs)/books/${item.id}`)}>
       <View style={styles.contentImage}>
         <Image source={{ uri: item.coverImageUrl }} width={100} height={150} />
         <Pressable

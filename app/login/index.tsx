@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormData, loginSchema } from "@/modal/login";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { login } from "@/api/login";
-import { Redirect, router , Link } from "expo-router";
 import { useRouter } from "expo-router";
 
 
@@ -25,7 +24,7 @@ export default () => {
   };
 
   const tempLogin = () => {
-    router.replace("/(tabs)/home");
+    router.replace("/(drawer)/(tabs)/home");
   }
 
   const loginMutation = useMutation({
@@ -37,7 +36,7 @@ export default () => {
       reset();
     },
     onSuccess: (data) => {
-      router.replace("/(tabs)/home");
+      router.replace("/(drawer)/(tabs)/home");
     },
   })
 

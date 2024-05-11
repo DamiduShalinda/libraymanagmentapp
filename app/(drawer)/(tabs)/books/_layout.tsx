@@ -1,4 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Stack, useRouter } from "expo-router";
 import { Pressable } from "react-native";
 
@@ -30,7 +31,9 @@ const StackLayout = () => {
             <MaterialIcons name="keyboard-arrow-left" size={24} color={color} />
           </Pressable>
           ),
-          
+          headerRight: () => (
+            <DrawerToggleButton />
+          ),
         }}
       />
     </Stack>

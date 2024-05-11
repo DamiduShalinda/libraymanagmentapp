@@ -43,7 +43,7 @@ export default () => {
         <FlatList
           data={books}
           renderItem={({ item }) => <BookItem item={item} />}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toFixed()}
           style={styles.flatListContainer}
           numColumns={3}
         />
