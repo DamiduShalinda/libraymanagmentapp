@@ -1,5 +1,5 @@
 import { getBookData } from "@/api/books";
-import useBookStore from "@/store/bookListStore";
+import useBookStore from "@/src/store/bookListStore";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";

@@ -1,8 +1,8 @@
 import { getAllBooks } from "@/api/books";
-import AuthorItemCard from "@/components/author/AuthorItemCard";
-import BookItem from "@/components/books/BookItem";
-import { Book } from "@/modal/book";
-import useBookStore from "@/store/bookListStore";
+import AuthorItemCard from "@/src/components/author/AuthorItemCard";
+import BookItem from "@/src/components/books/BookItem";
+import { Book } from "@/src/modal/book";
+import useBookStore from "@/src/store/bookListStore";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -65,6 +65,7 @@ export default function Home() {
           renderItem={({ item }) => <AuthorItemCard item={item} />}
           keyExtractor={(item) => item.name}
           numColumns={2}
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
           showsHorizontalScrollIndicator={false}
           style={styles.authorFlatList}
         />

@@ -1,4 +1,4 @@
-import CustomDrawerContent from "@/components/drawer/CustomDrawerContent";
+import CustomDrawerContent from "@/src/components/drawer/CustomDrawerContent";
 import { Drawer } from "expo-router/drawer";
 
 export default function StackLayout() {

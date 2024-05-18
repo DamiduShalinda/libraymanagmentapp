@@ -1,6 +1,6 @@
-import AuthorItemCard from "@/components/author/AuthorItemCard";
-import BookItem from "@/components/books/BookItem";
-import { Book } from "@/modal/book";
+import AuthorItemCard from "@/src/components/author/AuthorItemCard";
+import BookItem from "@/src/components/books/BookItem";
+import { Book } from "@/src/modal/book";
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import {

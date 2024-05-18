@@ -1,4 +1,4 @@
-import { Book } from "@/modal/book";
+import { Book } from "@/src/modal/book";
 import { GETALLBOOKS, GETBOOK } from "../const"
 import axios from "axios";
 

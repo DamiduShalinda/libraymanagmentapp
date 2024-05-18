@@ -9,9 +9,9 @@ import {
   useSafeAreaFrame,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import useBookStore, { BookCartItem } from "@/store/bookListStore";
 import AntDesign from "@expo/vector-icons/build/AntDesign";
 import { useRouter } from "expo-router";
+import useBookStore, { BookCartItem } from "@/src/store/bookListStore";
 
 type CustomDrawerButtonProps = {
   text: string;
@@ -25,7 +25,7 @@ const CustomDrawerContent = (props: any) => {
   const { books, removeBook, clearBooks } = useBookStore();
   const { top, bottom, left } = useSafeAreaInsets();
   const router = useRouter();
-  const BookCartItem = (item: BookCartItem) => (
+  const BookCartItem = (item : BookCartItem) => (
     <Pressable style={Styles.bookCartItem} key={item.id} onPress={() => router.push(`/(drawer)/(tabs)/books/${item.id}`)}>
       <View
         style={{

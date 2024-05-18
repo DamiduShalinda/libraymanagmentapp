@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
-import { View, Text, StyleSheet, TextInput, Pressable, Button } from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable, Button, KeyboardAvoidingView } from "react-native";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginFormData, loginSchema } from "@/modal/login";
+import { LoginFormData, loginSchema } from "@/src/modal/login";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { login } from "@/api/login";
 import { useRouter } from "expo-router";

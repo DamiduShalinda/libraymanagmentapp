@@ -1,4 +1,4 @@
-import { LoginFormData } from "@/modal/login";
+import { LoginFormData } from "@/src/modal/login";
 import axios from "axios";
 import { LOGIN } from "../const";
 

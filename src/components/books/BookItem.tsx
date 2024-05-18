@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text, Image, View , ToastAndroid } from "react-native";
 import React from "react";
-import { Book } from "@/modal/book";
+import { Book } from "@/src/modal/book";
 import { AntDesign } from "@expo/vector-icons";
-import useBookStore from "@/store/bookListStore";
 import { useRouter } from "expo-router";
+import useBookStore from "@/src/store/bookListStore";
 
 const BookItem = ({ item }: { item: Book }) =>{
 

@@ -5,7 +5,7 @@ import { Tabs , Stack } from "expo-router";
 
 export default () => {
   return (
-    <Tabs initialRouteName="authors" screenOptions={{headerTitle : "kmnkn"}}>
+    <Tabs initialRouteName="books" screenOptions={{headerTitle : "kmnkn"}}>
       <Tabs.Screen
         name="home"
         options={{
