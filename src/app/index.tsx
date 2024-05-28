@@ -1,17 +1,30 @@
 import { View, Text, ViewComponent, ScrollView, TouchableHighlight , StyleSheet } from 'react-native'
 import React from 'react'
-import { Redirect } from 'expo-router'
+import {Redirect, useNavigation} from 'expo-router'
 import { useQuery } from '@tanstack/react-query'
 import { getAllBooks } from '@/api/books'
-import BookList from '../components/BookList'
-import { defaultStyles } from '../constants/styles'
+import { defaultStyles } from '@/constants/styles'
+import BookList from "@/components/BookList";
 
 export default function Book() {
 
+  const navigation = useNavigation()
   const {data , isError , isLoading , error} = useQuery({
     queryKey: ['books'],
     queryFn: getAllBooks
 })
+
+  React.useEffect(() => {
+    navigation.setOptions({
+      headerTitle : "Books",
+      headerSearchBarOptions: {
+        placeholder: "Find In Books",
+        onChangeText: (event: { nativeEvent: { text: string } }) => {
+          console.log(event.nativeEvent.text)
+        }
+      },
+    })
+  } , [navigation])
 
   if(isLoading){
     return <View>

@@ -1,25 +1,23 @@
 import { StyleSheet, Text, ToastAndroid, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Book } from '../modal/book'
+import { Book } from '@/modal/book'
 import { Image} from "expo-image"
 import { Feather } from '@expo/vector-icons';
-import { useRouter } from 'expo-router'
+import { useRouter , Link } from 'expo-router'
 
 const BookListItem = ({item} : {item : Book}) => {
 
-
-    const router = useRouter()
-    const handlePress = () => {
-        console.log(item.id)
-        router.push(`/books/${item.id}`)
-    }
 
     const handlePlusButton = () => {
         ToastAndroid.show("Added to Library", ToastAndroid.SHORT)
     }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePress}>
+      <Link asChild href={{
+            pathname : `/books/[id]`,
+            params : {id : item.id}
+      }}>
+    <TouchableOpacity style={styles.container}>
         <View>
         <Image
         style={styles.image}
@@ -33,6 +31,7 @@ const BookListItem = ({item} : {item : Book}) => {
         </View>
         <Text style={styles.text}>{item.bookName}</Text>
     </TouchableOpacity>
+      </Link>
   )
 }
 

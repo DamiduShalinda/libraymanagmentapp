@@ -17,6 +17,12 @@ const StackLayout = () => {
             headerTitle: "All Books",
           }}
         />
+        <Stack.Screen
+          name="books"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
     </QueryClientProvider>
   );

@@ -1,4 +1,3 @@
-import books from "@/src/app/(drawer)/(tabs)/books";
 import { create } from "zustand";
 
 export type BookCartItem = {

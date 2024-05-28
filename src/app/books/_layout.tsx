@@ -1,8 +1,16 @@
-import { Stack } from "expo-router"
+import {Stack} from "expo-router";
 
 const StackScreen = () => {
     return(
-        <Stack screenOptions={{headerShown : false}}/>
+        <Stack>
+            <Stack.Screen
+                name="[id]"
+                options={{
+                    headerShown: true,
+                    title: "Book Details",
+                }}
+            />
+        </Stack>
     )
 }
 

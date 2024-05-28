@@ -3,6 +3,6 @@ export type Book = {
     bookName: string;
     isbn: string;
     authorName: string;
-    status: string;
+    status: "Available" | "Not Available" | "Read";
     coverImageUrl: string;
   };
