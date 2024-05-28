@@ -2,20 +2,24 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
 
 const StackLayout = () => {
+  const queryClient = new QueryClient();
 
-    const queryClient = new QueryClient();
-
-    return (
-        <QueryClientProvider client={queryClient}>
-        <Stack>
-            <Stack.Screen name="login" options={{headerShown : false}}/>
-            <Stack.Screen name="register" options={{
-                title : "Register"
-                }}/>
-            <Stack.Screen name="(drawer)" options={{headerShown : false}}/>
-        </Stack>
-        </QueryClientProvider>
-    );
-}
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: true,
+            headerSearchBarOptions: {
+              placeholder: "Find In Books",
+            },
+            headerTitle: "All Books",
+          }}
+        />
+      </Stack>
+    </QueryClientProvider>
+  );
+};
 
 export default StackLayout;
